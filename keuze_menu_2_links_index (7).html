@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maak je keuze</title>
+  <style>
+    :root {
+      /* Nieuwe kleuren minder fel rood */
+      --bg: #2c4356;          /* donkerblauw/grijs */
+      --text: #F8FAFC;        /* bijna wit voor contrast */
+      --muted: rgba(248,250,252,.75);
+      --accent: #cc0000;      /* minder fel rood */
+      --accent-2: #FFFFFF;    /* wit */
+      --blue: #2c4356;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background:
+        radial-gradient(900px 450px at 85% 15%, rgba(204,0,0,.14), transparent),
+        radial-gradient(700px 350px at 15% 25%, rgba(255,255,255,.06), transparent),
+        var(--bg);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+
+    .container { width: 100%; max-width: 900px; }
+
+    header { text-align: center; margin-bottom: 1.5rem; }
+    h1 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); margin: 0; letter-spacing: .3px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      padding: 1.25rem;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .card:focus-within, .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(204,0,0,.45);
+      box-shadow: 0 14px 40px rgba(204,0,0,.18);
+    }
+
+    .title { font-size: 1.25rem; margin: .25rem 0 .5rem; }
+    .desc { color: var(--muted); margin: 0 0 1rem; min-height: 2.5em; }
+
+    .actions { display: flex; gap: .5rem; }
+
+    .btn {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      text-decoration: none;
+      padding: .85rem 1rem;
+      border-radius: .75rem;
+      border: 2px solid transparent;
+      font-weight: 700;
+      letter-spacing: .2px;
+      color: #fff;
+      background: var(--accent);
+      cursor: pointer;
+      transition: transform .08s ease, box-shadow .12s ease;
+      box-shadow: 0 6px 18px rgba(204,0,0,.28);
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn.alt {
+      background: var(--accent-2);
+      color: var(--blue);
+      border-color: var(--blue);
+      box-shadow: 0 6px 18px rgba(44,67,86,.25);
+    }
+
+    .btn.disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Maak je keuze</h1>
+    </header>
+
+    <main class="grid" role="navigation" aria-label="Hoofdkeuzes">
+      <!-- KAART 1 -->
+      <section class="card">
+        <h2 class="title">KNBSB Academy</h2>
+        <p class="desc">Ga direct naar de KNBSB Online Sports Academy.</p>
+        <div class="actions">
+          <a class="btn" href="https://knbsb.onlinesportsacademy.com/" target="_blank" rel="noopener noreferrer" aria-label="Ga naar KNBSB Academy">Ga naar Academy</a>
+        </div>
+      </section>
+
+      <!-- KAART 2 -->
+      <section class="card">
+        <h2 class="title">Online Webinars</h2>
+        <p class="desc">Binnenkort beschikbaar.</p>
+        <div class="actions">
+          <a class="btn alt disabled" href="#" aria-label="Binnenkort beschikbaar">Binnenkort</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function() {
+      const params = new URLSearchParams(location.search);
+      const a = params.get('a');
+      const b = params.get('b');
+      if (a) document.querySelector('a[aria-label="Ga naar KNBSB Academy"]').href = a;
+      if (b) {
+        const linkB = document.querySelector('a[aria-label="Binnenkort beschikbaar"]');
+        linkB.href = b;
+        linkB.classList.remove('disabled');
+        linkB.textContent = 'Ga naar Webinars';
+        linkB.setAttribute('aria-label', 'Ga naar Webinars');
+      }
+    })();
+  </script>
+</body>
+</html>
