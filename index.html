@@ -107,38 +107,29 @@
     <main class="grid" role="navigation" aria-label="Hoofdkeuzes">
       <!-- KAART 1 -->
       <section class="card">
-        <h2 class="title">KNBSB Academy</h2>
-        <p class="desc">Ga direct naar de KNBSB Online Sports Academy.</p>
+        <h2 class="title">First Base of Coaching Webinar</h2>
+        <p class="desc">
+          Maandag, 26 januari 2026 · 19:30 – 21:00<br>
+          Tijdzone: Europe/Amsterdam<br><br>
+          <strong>Google Meet link:</strong><br>
+          <a href="https://meet.google.com/sos-vazz-vjq" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:underline;">https://meet.google.com/sos-vazz-vjq</a>
+        </p>
         <div class="actions">
-          <a class="btn" href="https://knbsb.onlinesportsacademy.com/" target="_blank" rel="noopener noreferrer" aria-label="Ga naar KNBSB Academy">Ga naar Academy</a>
+          <a class="btn" href="https://meet.google.com/sos-vazz-vjq" target="_blank" rel="noopener noreferrer" aria-label="Ga naar Google Meet Webinar">Deelnemen</a>
         </div>
       </section>
 
       <!-- KAART 2 -->
       <section class="card">
-        <h2 class="title">Online Webinars</h2>
-        <p class="desc">Binnenkort beschikbaar.</p>
+        <h2 class="title">KNBSB Academy</h2>
+        <p class="desc">Ga direct naar de KNBSB Online Sports Academy.</p>
         <div class="actions">
-          <a class="btn alt disabled" href="#" aria-label="Binnenkort beschikbaar">Binnenkort</a>
+          <a class="btn alt" href="https://knbsb.onlinesportsacademy.com/" target="_blank" rel="noopener noreferrer" aria-label="Ga naar KNBSB Academy">Ga naar Academy</a>
         </div>
       </section>
     </main>
   </div>
 
-  <script>
-    (function() {
-      const params = new URLSearchParams(location.search);
-      const a = params.get('a');
-      const b = params.get('b');
-      if (a) document.querySelector('a[aria-label="Ga naar KNBSB Academy"]').href = a;
-      if (b) {
-        const linkB = document.querySelector('a[aria-label="Binnenkort beschikbaar"]');
-        linkB.href = b;
-        linkB.classList.remove('disabled');
-        linkB.textContent = 'Ga naar Webinars';
-        linkB.setAttribute('aria-label', 'Ga naar Webinars');
-      }
-    })();
-  </script>
+  
 </body>
 </html>
